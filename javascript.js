@@ -39,10 +39,7 @@ function playRound(computerChoice, humanChoice) {
     }
 }
 
-
-
-
-function game() {
+function playGame() {
     // Get choices
     let humanChoice = getHumanChoice();
     let computerChoice = getComputerChoice();
@@ -60,7 +57,11 @@ function game() {
 }
 
 // Run the game
-game();
+playGame();
+playGame();
+playGame();
+playGame();
+playGame();
 
 
     

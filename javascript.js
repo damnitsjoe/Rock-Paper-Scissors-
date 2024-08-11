@@ -2,7 +2,8 @@
 let compChoices = ['rock', 'paper', 'scissors']
 let humanScore = 0; 
 let computerScore = 0; 
-let choice = prompt('Rock, Paper or Sicssors');
+
+
 
 //Write logic to get computer choice. 
 function getComputerChoice() {
@@ -12,45 +13,61 @@ function getComputerChoice() {
 
 //write logic for human player 
 function getHumanChoice() {
-//input for human player to choose between R, P, S. 
-    switch (choice) {
-        //human choices
-        case 'rock':
-            console.log('you chose rock')
-        break; 
-        case 'paper':
-            console.log('you chose paper')
-        break; 
-        case 'scissors':
-            console.log('you chose scissors')
-        break; 
-        default: 
-            console.log('you left the answer blank')
-        break;
-    }}
+    let choice = prompt('Make a choice: rock, paper, or scissors').toLowerCase();
+    if (compChoices.includes(choice)) {
+        return choice; // Return the valid choice
+    } else {
+        console.log('Invalid choice. Please choose rock, paper, or scissors.');
+        return getHumanChoice(); // Prompt again if the choice is invalid
+    }
+}
 
-//logic function to decide who wins based on choices. 
-function playRound() {
-    if (getHumanChoice == getComputerChoice) {
+// function to decide who wins based on choices. 
+function playRound(computerChoice, humanChoice) {
+    if (computerChoice === humanChoice) {
         console.log('We have a tie!');
     } else if (
-    //else if for winning/losing pairs
-        (getHumanChoice === 'rock' && getComputerChoice === 'scissors') ||
-        (getHumanChoice === 'scissors' && getComputerChoice === 'paper') ||
-        (getHumanChoice === 'paper' && getComputerChoice === 'rock')
-    ){
+        (humanChoice === 'rock' && computerChoice === 'scissors') ||
+        (humanChoice === 'paper' && computerChoice === 'rock') ||
+        (humanChoice === 'scissors' && computerChoice === 'paper')
+    ) {
         console.log('You Win!');
+        humanScore++;
     } else {
-        console.log('Computer Wins!')
+        console.log('Computer Wins!');
+        computerScore++;
     }
-    }
+}
+
+
+
+
+function game() {
+    // Get choices
+    let humanChoice = getHumanChoice();
+    let computerChoice = getComputerChoice();
+
+    // Display choices
+    console.log('Computer chose:', computerChoice);
+    console.log('You chose:', humanChoice);
+
+    // Play a round and determine the winner
+    playRound(computerChoice, humanChoice);
+
+    // Display scores
+    console.log('Human Score:', humanScore);
+    console.log('Computer Score:', computerScore);
+}
+
+// Run the game
+game();
 
 
     
 
-//figure out how to let humans input their choice and return a result 
-console.log(compChoices);
-getHumanChoice(choice);
-getComputerChoice();
-console.log(getComputerChoice());
-playRound(getComputerChoice, getHumanChoice);
+
+
+    
+
+
+
